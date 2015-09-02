@@ -1,35 +1,76 @@
 // JavaScript Document
+var choiceArray = ["paper", "rock", "scissors"];
 
-var userChoice = prompt("Do you choose rock, paper or scissors?");
-var computerChoice = Math.random();
-console.log(userChoice);
-var computerChoice = Math.random()
-console.log (computerChoice)
-if(0-.33)
-console.log("rock")
-else if(.34-.66)
-console.log("paper")
-else(.67-1)
-console.log("scissors")
+        var getUserChoice = function()
+        {
+            var userChoice = undefined;
+            var userChoiceIndex = undefined;
 
-var compare = function(choice1, choice2) {
-if (choice1 === choice2) {
-return "The result is a tie!";
-}
-else if (choice1 ==="rock") {
-if (choice2 === "scissors") {
-return "rock wins";
-}
-else {
-return "paper wins";
-}
-}
-else if (choice1 ==="paper") {
-if (choice2 ==="rock") {
-return "paper wins";
-}
-else {
-return "scissors wins";
-}
-}
-};
+            while (true)
+            {
+                userChoice = prompt("Choose - paper, scissor or rock");
+                userChoiceIndex = choiceArray.indexOf(userChoice);
+
+                if (userChoiceIndex >= 0 && userChoiceIndex <= 2)
+                    return userChoice;
+
+                alert("Not valided choice try again!");
+            }
+        }
+
+        var getComputerChoice = function()
+        {
+            var computerChoiceIndex = Math.floor(Math.random() * 3);
+            return choiceArray[computerChoiceIndex];
+        }
+
+        var decideWinner = function(userChoice, computerChoice)
+        {
+            if (userChoice === computerChoice)
+                return "There is a tie!!!";
+
+            if (userChoice === "paper")
+            {
+                if (computerChoice === "rock")
+                {
+                    return "paper wins!";
+                }
+                else //scissors
+                {
+                    return "scissors win!";
+                }
+            }
+            if (userChoice === "rock")
+            {
+                if (computerChoice === "paper")
+                {
+                    return "paper wins!";
+                }
+                else //rock
+                {
+                    return "rock wins!";
+                }
+            }
+            else //scissors
+            {
+                if (computerChoice === "paper")
+                {
+                    return "scissors wins!";
+                }
+                else //rock
+                {
+                    return "rock wins!";
+                }
+            }
+        }
+
+        var repeatGame = function()
+        {
+            var userChoice = getUserChoice();
+            var computerChoice = getComputerChoice();
+            var gameResult = decideWinner(userChoice, computerChoice);
+            gameResult = "Computer Choice = " + computerChoice + ". " + gameResult;
+            alert(gameResult);
+        }
+
+        ();
